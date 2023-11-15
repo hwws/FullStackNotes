@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Timestamp Generator</title>
+</head>
+<body>
+<button id="generateButton">Generate Timestamp</button>
+<p id="timestamp"></p >
+
+<script>
+    document.getElementById("generateButton").addEventListener("click", function() {
+        fetch("http://localhost:8080/generate-timestamp")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("timestamp").innerText = "Random Timestamp: " + data.timestamp;
+            })
+            .catch(error => console.error("Error:", error));
+    });
+</script>
+</body>
+</html>
